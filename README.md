@@ -37,7 +37,7 @@ Numbers are based on  WP 'user_id' field prefilled with zeros except when 'rando
 1. Use the "Say What?" plugin with text domain ultimate-member
 
 ## Updates
-1. Version 1.1.0 Tested with UM 2.8.3
+1. Version 1.1.0 Updated for UM 2.8.3
 
 ## Installation
 1. Download the zip file and install as a WP Plugin, activate the plugin.
