@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Unique Membership ID
  * Description:     Extension to Ultimate Member for setting a prefixed Unique Membership ID per UM Role.
- * Version:         1.1.0
+ * Version:         1.2.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -10,7 +10,7 @@
  * Author URI:      https://github.com/MissVeronica
  * Text Domain:     ultimate-member
  * Domain Path:     /languages
- * UM version:      2.8.3
+ * UM version:      2.8.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; 
@@ -55,6 +55,7 @@ class UM_Unique_Membership_ID {
                             }
 
                             $this->um_unique_membership_meta_key = sanitize_key( UM()->options()->get( 'um_unique_membership_id_meta_key' ));
+
                             if ( empty( $this->um_unique_membership_meta_key )) {
                                 $this->um_unique_membership_meta_key = 'um_unique_membership_id';
                             }
@@ -64,44 +65,33 @@ class UM_Unique_Membership_ID {
 
                             if ( $array[1] == 'meta_key' && isset( $array[2] ) && ! empty( $array[2] )) {
 
-                                if ( isset( $args[$array[2]] ) && ! empty( $args[$array[2]] )) {
+                                $prefix = $array[2];
+                                if ( $prefix == '#year#' ) {
+                                    $prefix = date_i18n( 'y', current_time( 'timestamp' ));
+                                }
 
-                                    $prefix = sanitize_text_field( $args[$array[2]] );
+                                if ( function_exists( 'mb_strlen' )) {
                                     if ( isset( $array[3] ) && ! empty( $array[3] ) && mb_strlen( $array[3] ) == 1 ) {
                                         $prefix .= $array[3];
                                     }
 
-                                    if ( isset( $array[4] ) && $array[4] == 'random' ) {
-
-                                        $string_pad = str_pad( rand( 0, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
-
-                                        while( $this->unique_membership_id_exists( $prefix . $string_pad )) {
-                                            $string_pad = str_pad( rand( 0, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
-                                        }
-
-                                    } else {
-
-                                        $string_pad = str_pad( strval( $user_id ), $digits, '0', STR_PAD_LEFT );
-
-                                        $i = 1;
-                                        $string_pad_saved = $string_pad;
-
-                                        while( $this->unique_membership_id_exists( $prefix . $string_pad )) {
-                                            $string_pad = $string_pad_saved . '-' . str_pad( strval( $i++ ), 3, '0', STR_PAD_LEFT );
-                                        }
+                                } else {
+                                    if ( isset( $array[3] ) && ! empty( $array[3] ) && strlen( $array[3] ) == 1 ) {
+                                        $prefix .= $array[3];
                                     }
                                 }
 
-                            } else {
+                                if ( isset( $array[4] ) && $array[4] == 'random' ) {
 
-                                $prefix = $array[1];
+                                    $min = 0;
+                                    if ( isset( $array[5] ) && ! empty( $array[5] )) {
+                                        $min = intval( $array[5] );
+                                    }
 
-                                if ( isset( $array[2] ) && $array[2] == 'random' ) {
-
-                                    $string_pad = str_pad( rand( 0, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
+                                    $string_pad = str_pad( rand( $min, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
 
                                     while( $this->unique_membership_id_exists( $prefix . $string_pad )) {
-                                        $string_pad = str_pad( rand( 0, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
+                                        $string_pad = str_pad( rand( $min, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
                                     }
 
                                 } else {
@@ -116,6 +106,37 @@ class UM_Unique_Membership_ID {
                                     }
                                 }
 
+                            } else {
+
+                                $prefix = $array[1];
+                                if ( $prefix == '#year#' ) {
+                                    $prefix = date_i18n( 'y', current_time( 'timestamp' ));
+                                }
+
+                                if ( isset( $array[2] ) && $array[2] == 'random' ) {
+
+                                    $min = 0;
+                                    if ( isset( $array[3] ) && ! empty( $array[3] )) {
+                                        $min = intval( $array[3] );
+                                    }
+
+                                    $string_pad = str_pad( rand( $min, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
+
+                                    while( $this->unique_membership_id_exists( $prefix . $string_pad )) {
+                                        $string_pad = str_pad( rand( $min, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
+                                    }
+
+                                } else {
+
+                                    $string_pad = str_pad( strval( $user_id ), $digits, '0', STR_PAD_LEFT );
+
+                                    $i = 1;
+                                    $string_pad_saved = $string_pad;
+
+                                    while( $this->unique_membership_id_exists( $prefix . $string_pad )) {
+                                        $string_pad = $string_pad_saved . '-' . str_pad( strval( $i++ ), 3, '0', STR_PAD_LEFT );
+                                    }
+                                }
                             }
 
                             if ( ! empty( $prefix ) && ! empty( $string_pad )) {
@@ -133,7 +154,7 @@ class UM_Unique_Membership_ID {
     public function um_settings_structure_unique_membership_id( $settings_structure ) {
 
         $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['title']       = __( 'Unique Membership ID', 'ultimate-member' );
-        $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['description'] = __( 'Plugin version 1.1.0 - tested with UM 2.8.3', 'ultimate-member' );
+        $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['description'] = __( 'Plugin version 1.2.0 - tested with UM 2.8.5', 'ultimate-member' );
 
         $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['fields'][] = array(
                         'id'          => 'um_unique_membership_id',
@@ -161,3 +182,4 @@ class UM_Unique_Membership_ID {
 }
 
 new UM_Unique_Membership_ID();
+
