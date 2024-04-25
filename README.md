@@ -10,7 +10,8 @@ UM Settings -> Appearance -> Registration Form
 ### Prefix format
 <code>um_prospect : ABCD
 um_member : EFGH-
-um_senior : Qwerty- : random
+um_member : #year#
+um_senior : Qwerty- : random : minimum
 </code>
 
 Numbers are based on WP 'user_id' field prefilled with zeros except when 'random' is specified.
@@ -21,8 +22,8 @@ Numbers are based on WP 'user_id' field prefilled with zeros except when 'random
 ### meta_key format
 <code>um_prospect : meta_key : um-field-name
 um_member : meta_key : um-field-name : - 
-um_junior : meta_key : um-field-name : - : random
-um_senior : meta_key : um-field-name : : random
+um_junior : meta_key : um-field-name : - : random : minimum
+um_senior : meta_key : um-field-name : : random : minimum
 </code>
 
 The Registration form user entered value for the meta_key 'um-field-name' will be used as prefix. In these examples user entered 'CompanyName'.
@@ -38,6 +39,7 @@ Numbers are based on  WP 'user_id' field prefilled with zeros except when 'rando
 
 ## Updates
 1. Version 1.1.0 Updated for UM 2.8.3
+2. Version 1.2.0 #year# and minimum value for random
 
 ## Installation
 1. Download the zip file and install as a WP Plugin, activate the plugin.
