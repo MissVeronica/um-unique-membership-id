@@ -157,7 +157,7 @@ class UM_Unique_Membership_ID {
     public function um_settings_structure_unique_membership_id( $settings_structure ) {
 
         $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['title']       = __( 'Unique Membership ID', 'ultimate-member' );
-        $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['description'] = __( 'Plugin version 1.2.0 - tested with UM 2.8.5', 'ultimate-member' );
+        $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['description'] = __( 'Plugin version 1.4.0 - tested with UM 2.8.5', 'ultimate-member' );
 
         $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['fields'][] = array(
                         'id'          => 'um_unique_membership_id',
