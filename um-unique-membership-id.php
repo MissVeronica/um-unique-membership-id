@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Unique Membership ID
  * Description:     Extension to Ultimate Member for setting a prefixed Unique Membership ID per UM Role.
- * Version:         1.4.0
+ * Version:         1.5.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -66,8 +66,8 @@ class UM_Unique_Membership_ID {
                             if ( $array[1] == 'meta_key' && isset( $array[2] ) && ! empty( $array[2] )) {
 
                                 $prefix = $array[2];
-                                if ( $prefix == '#year#' ) {
-                                    $prefix = date_i18n( 'y', current_time( 'timestamp' ));
+                                if ( strpos( $prefix, '#year#' ) !== false ) {
+                                    $prefix = str_replace( '#year#', date_i18n( 'y', current_time( 'timestamp' )), $prefix );
                                 }
 
                                 if ( function_exists( 'mb_strlen' )) {
@@ -109,8 +109,8 @@ class UM_Unique_Membership_ID {
                             } else {
 
                                 $prefix = $array[1];
-                                if ( $prefix == '#year#' ) {
-                                    $prefix = date_i18n( 'y', current_time( 'timestamp' ));
+                                if ( strpos( $prefix, '#year#' ) !== false ) {
+                                    $prefix = str_replace( '#year#', date_i18n( 'y', current_time( 'timestamp' )), $prefix );
                                 }
 
                                 if ( isset( $array[2] ) && $array[2] == 'random' ) {
