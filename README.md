@@ -42,6 +42,7 @@ Numbers are based on  WP 'user_id' field prefilled with zeros except when 'rando
 ## Updates
 1. Version 1.1.0 Updated for UM 2.8.3
 2. Version 1.2.0 #year# and minimum value for random
+3. Version 1.3.0 Caching issue solved
 
 ## Installation
 1. Download the zip file and install as a WP Plugin, activate the plugin.
