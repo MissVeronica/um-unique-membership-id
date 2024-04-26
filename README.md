@@ -10,7 +10,7 @@ UM Settings -> Appearance -> Registration Form
 ### Prefix format
 <code>um_prospect : ABCD
 um_member : EFGH-
-um_member : #year#
+um_member : AB#year#CD
 um_senior : Qwerty- : random : 100000
 </code>
 
@@ -19,7 +19,7 @@ Numbers are based on WP 'user_id' field prefilled with zeros except when 'random
 2. Meta values for User Role ID <code>um_member</code> and 5 digits: <code>EFGH-00345</code>
 3. Meta values for User Role ID <code>um_senior</code> and 5 random digits: <code>Qwerty-73528</code>
 4. Random can specify a minimum number
-5. Prefix #year# will take last two digits from current year
+5. Prefix will replace #year# wwith last two digits from current year 
 
 ### meta_key format
 <code>um_prospect : meta_key : um-field-name
@@ -43,7 +43,7 @@ Numbers are based on  WP 'user_id' field prefilled with zeros except when 'rando
 1. Version 1.1.0 Updated for UM 2.8.3
 2. Version 1.2.0 #year# and minimum value for random
 3. Version 1.3.0 Caching issue solved
-4. Version 1.4.0 Code improvements
+4. Version 1.4.0/1.5.0 Code improvements
 
 ## Installation
 1. Download the zip file and install as a WP Plugin, activate the plugin.
