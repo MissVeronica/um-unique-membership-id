@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Unique Membership ID
  * Description:     Extension to Ultimate Member for setting a prefixed Unique Membership ID per UM Role.
- * Version:         1.3.0
+ * Version:         1.4.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -36,7 +36,7 @@ class UM_Unique_Membership_ID {
 
     public function um_user_unique_membership_id( $user_id, $role, $old_roles ) {
 
-        if ( ! empty( $old_roles ) && ! in_array( $role, $old_roles )) {
+        if ( ! empty( $role )) {
 
             $um_unique_membership_id = array_map( 'sanitize_text_field', array_map( 'trim', explode( "\n", UM()->options()->get( 'um_unique_membership_id' ))));
             if ( is_array( $um_unique_membership_id )) {
