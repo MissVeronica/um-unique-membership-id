@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Unique Membership ID
  * Description:     Extension to Ultimate Member for setting a prefixed Unique Membership ID per UM Role.
- * Version:         1.5.0
+ * Version:         1.6.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -62,6 +62,12 @@ class UM_Unique_Membership_ID {
 
                             $prefix = '';
                             $string_pad = '';
+                            $suffix = '';
+
+                            if ( in_array( '#year#', $array )) {
+                                $suffix = '-' . date_i18n( 'y', current_time( 'timestamp' ));
+                            }
+                            
 
                             if ( $array[1] == 'meta_key' && isset( $array[2] ) && ! empty( $array[2] )) {
 
@@ -90,7 +96,7 @@ class UM_Unique_Membership_ID {
 
                                     $string_pad = str_pad( rand( $min, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
 
-                                    while( $this->unique_membership_id_exists( $prefix . $string_pad )) {
+                                    while( $this->unique_membership_id_exists( $prefix . $string_pad . $suffix )) {
                                         $string_pad = str_pad( rand( $min, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
                                     }
 
@@ -101,7 +107,7 @@ class UM_Unique_Membership_ID {
                                     $i = 1;
                                     $string_pad_saved = $string_pad;
 
-                                    while( $this->unique_membership_id_exists( $prefix . $string_pad )) {
+                                    while( $this->unique_membership_id_exists( $prefix . $string_pad . $suffix )) {
                                         $string_pad = $string_pad_saved . '-' . str_pad( strval( $i++ ), 3, '0', STR_PAD_LEFT );
                                     }
                                 }
@@ -122,7 +128,7 @@ class UM_Unique_Membership_ID {
 
                                     $string_pad = str_pad( rand( $min, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
 
-                                    while( $this->unique_membership_id_exists( $prefix . $string_pad )) {
+                                    while( $this->unique_membership_id_exists( $prefix . $string_pad . $suffix )) {
                                         $string_pad = str_pad( rand( $min, pow( 10, $digits ) -1 ), $digits, '0', STR_PAD_LEFT );
                                     }
 
@@ -133,7 +139,7 @@ class UM_Unique_Membership_ID {
                                     $i = 1;
                                     $string_pad_saved = $string_pad;
 
-                                    while( $this->unique_membership_id_exists( $prefix . $string_pad )) {
+                                    while( $this->unique_membership_id_exists( $prefix . $string_pad . $suffix )) {
                                         $string_pad = $string_pad_saved . '-' . str_pad( strval( $i++ ), 3, '0', STR_PAD_LEFT );
                                     }
                                 }
@@ -141,7 +147,7 @@ class UM_Unique_Membership_ID {
 
                             if ( ! empty( $prefix ) && ! empty( $string_pad )) {
 
-                                $um_unique_membership_id = $prefix . $string_pad;
+                                $um_unique_membership_id = $prefix . $string_pad . $suffix;
                                 update_user_meta( $user_id, $this->um_unique_membership_meta_key, $um_unique_membership_id );
 
                                 UM()->user()->remove_cache( $user_id );
@@ -157,7 +163,7 @@ class UM_Unique_Membership_ID {
     public function um_settings_structure_unique_membership_id( $settings_structure ) {
 
         $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['title']       = __( 'Unique Membership ID', 'ultimate-member' );
-        $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['description'] = __( 'Plugin version 1.5.0 - tested with UM 2.8.5', 'ultimate-member' );
+        $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['description'] = __( 'Plugin version 1.6.0 - tested with UM 2.8.5', 'ultimate-member' );
 
         $settings_structure['appearance']['sections']['registration_form']['form_sections']['unique_membership_id']['fields'][] = array(
                         'id'          => 'um_unique_membership_id',
