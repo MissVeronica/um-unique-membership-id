@@ -25,7 +25,7 @@ Numbers are based on WP 'user_id' field prefilled with zeros except when 'random
 <code>um_prospect : meta_key : um-field-name
 um_member : meta_key : um-field-name : - 
 um_junior : meta_key : um-field-name : - : random : minimum
-um_senior : meta_key : um-field-name : : random : minimum
+um_senior : meta_key : um-field-name : : random : minimum : #year#
 </code>
 
 The Registration form user entered value for the meta_key 'um-field-name' will be used as prefix. In these examples user entered 'CompanyName'.
@@ -43,7 +43,7 @@ Numbers are based on  WP 'user_id' field prefilled with zeros except when 'rando
 1. Version 1.1.0 Updated for UM 2.8.3
 2. Version 1.2.0 #year# and minimum value for random
 3. Version 1.3.0 Caching issue solved
-4. Version 1.4.0/1.5.0 Code improvements
+4. Version 1.4.0/1.5.0/1.6.0 Code improvements
 
 ## Installation
 1. Download the zip file and install as a WP Plugin, activate the plugin.
