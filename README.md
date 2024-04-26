@@ -19,6 +19,7 @@ Numbers are based on WP 'user_id' field prefilled with zeros except when 'random
 2. Meta values for User Role ID <code>um_member</code> and 5 digits: <code>EFGH-00345</code>
 3. Meta values for User Role ID <code>um_senior</code> and 5 random digits: <code>Qwerty-73528</code>
 4. Random can specify a minimum number
+5. Prefix #year# will take last two digits from current year
 
 ### meta_key format
 <code>um_prospect : meta_key : um-field-name
