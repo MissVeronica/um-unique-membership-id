@@ -11,13 +11,14 @@ UM Settings -> Appearance -> Registration Form
 <code>um_prospect : ABCD
 um_member : EFGH-
 um_member : #year#
-um_senior : Qwerty- : random : minimum
+um_senior : Qwerty- : random : 100000
 </code>
 
 Numbers are based on WP 'user_id' field prefilled with zeros except when 'random' is specified.
 1. Meta values for User Role ID <code>um_prospect</code> and 5 digits: <code>ABCD00345</code> 
 2. Meta values for User Role ID <code>um_member</code> and 5 digits: <code>EFGH-00345</code>
 3. Meta values for User Role ID <code>um_senior</code> and 5 random digits: <code>Qwerty-73528</code>
+4. Random can specify a minimum number
 
 ### meta_key format
 <code>um_prospect : meta_key : um-field-name
