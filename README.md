@@ -36,6 +36,9 @@ Numbers are based on  WP 'user_id' field prefilled with zeros except when 'rando
 3. Meta values for User Role ID <code>um_junior</code> and 6 random digits: <code>CompanyName-834602</code>
 4. Meta values for User Role ID <code>um_senior</code> and 6 random digits: <code>CompanyName246739</code>
 
+## Email placeholder
+1. Use the UM email placeholder {usermeta:here_any_usermeta_key} https://docs.ultimatemember.com/article/1340-placeholders-for-email-templates
+
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
 
