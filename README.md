@@ -42,6 +42,10 @@ Numbers are based on  WP 'user_id' field prefilled with zeros except when 'rando
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
 
+## References
+1. Unique User Account ID - https://github.com/MissVeronica/um-unique-user-account-id
+2. Extra Custom Username Field - https://github.com/MissVeronica/um-custom-username-field
+
 ## Updates
 1. Version 1.1.0 Updated for UM 2.8.3
 2. Version 1.2.0 #year# and minimum value for random
