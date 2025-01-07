@@ -1,8 +1,7 @@
 # UM Unique Membership ID
 Extension to Ultimate Member for setting a prefixed Unique Membership ID per UM User Role.
 
-## UM Settings
-UM Settings -> Appearance -> Registration Form
+## UM Settings -> Appearance -> Registration Form
 1. Unique Membership ID - Role ID:prefix or meta_key format - Enter the UM Role ID and the Unique Membership ID Prefix or meta_key format one setting per line.
 2. Unique Membership ID - Number of digits - Enter the number of digits in the Unique Membership ID. Default value is 5.
 3. Unique Membership ID - meta_key - Enter the meta_key name of the Unique Membership ID field. Default name is 'um_unique_membership_id'
