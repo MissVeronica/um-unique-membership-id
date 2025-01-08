@@ -1,15 +1,17 @@
 # UM Unique Membership ID
 Extension to Ultimate Member for setting a prefixed Unique Membership ID per UM User Role.
 
-## UM Settings -> Appearance -> Registration Form
-1. Unique Membership ID - Role ID:prefix or meta_key format - Enter the UM Role ID and the Unique Membership ID Prefix or meta_key format one setting per line.
-2. Unique Membership ID - Number of digits - Enter the number of digits in the Unique Membership ID. Default value is 5.
-3. Unique Membership ID - meta_key - Enter the meta_key name of the Unique Membership ID field. Default name is 'um_unique_membership_id'
+## UM Settings -> Appearance -> Registration Form -> "Unique Membership ID"
+1. * Role ID:prefix or meta_key format - Enter the UM Role ID and the Unique Membership ID Prefix or meta_key format one setting per line.
+2. * Number of digits - Enter the number of digits in the Unique Membership ID. Default value is 5.
+3. * meta_key - Enter the meta_key name of the Unique Membership ID field. Default name is 'um_unique_membership_id'
+4. * Prefix update at Role change - Tick to only update the prefix when the role is changed in prefix format.
 
 ### Prefix format
 <code>um_prospect : ABCD
 um_member : EFGH-
 um_member : AB#year#CD
+um_member : ABCD-:#year#
 um_senior : Qwerty- : random : 100000
 </code>
 
@@ -18,7 +20,8 @@ Numbers are based on WP 'user_id' field prefilled with zeros except when 'random
 2. Meta values for User Role ID <code>um_member</code> and 5 digits: <code>EFGH-00345</code>
 3. Meta values for User Role ID <code>um_senior</code> and 5 random digits: <code>Qwerty-73528</code>
 4. Random can specify a minimum number
-5. Prefix will replace #year# with last two digits from current year 
+5. Prefix will replace #year# with last two digits from current year
+6. #year# as the last value will add a year suffix like -25
 
 ### meta_key format
 <code>um_prospect : meta_key : um-field-name
@@ -50,6 +53,7 @@ Numbers are based on  WP 'user_id' field prefilled with zeros except when 'rando
 2. Version 1.2.0 #year# and minimum value for random
 3. Version 1.3.0 Caching issue solved
 4. Version 1.4.0/1.5.0/1.6.0 Code improvements
+5. Version 1.7.0 Prefix update at Role change. Code improvements
 
-## Installation
-1. Download the zip file and install as a WP Plugin, activate the plugin.
+## Installation & Updates
+1. Download the zip file via the green Code button and install or update as a new WP Plugin to upload, activate the plugin.
